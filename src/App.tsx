@@ -1,9 +1,11 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import Route from "./pages/Route"
-import HomePage from "./pages/HomePage"
+import HomePage from "./pages/home/HomePage"
+import { homeLoader } from "./pages/home/HomeLoader"
 import SearchPage from "./pages/search/SearchPage"
-import DeatailsPage from "./pages/DetailsPage"
+import DeatailsPage from "./pages/details/DetailsPage"
 import { SearchLoader } from "./pages/search/SearchLoader"
+import DetailsLoader from "./pages/details/DetailsLoader"
 
 function App() {
 
@@ -14,7 +16,8 @@ function App() {
       children: [
         {
           index: true,
-          element: <HomePage />
+          element: <HomePage />,
+          loader: homeLoader
         },
         {
           path: '/search',
@@ -22,7 +25,8 @@ function App() {
           loader: SearchLoader,
         },{
           path : '/packages/:name',
-          element: <DeatailsPage />
+          element: <DeatailsPage />,
+          loader: DetailsLoader
         }
       ]
     }
